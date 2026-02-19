@@ -51,7 +51,7 @@ For each configured station you get:
 
 | Sensor               | Description              | Unit   |
 |----------------------|--------------------------|--------|
-| Last Updated         | When the data was last refreshed | (timestamp) |
+| Last Updated         | Observation time from the buoy (UTC) | (timestamp) |
 | Water Temperature    | Sea surface temperature  | °C     |
 | Air Temperature      | Air temperature          | °C     |
 | Dew Point            | Dew point temperature    | °C     |

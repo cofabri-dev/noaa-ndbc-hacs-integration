@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -21,7 +23,7 @@ from .const import DOMAIN
 from .coordinator import NoaaBuoyCoordinator
 
 # Sensor key -> (name, unit, device_class, state_class)
-# last_updated is synthetic (from coordinator), not from NDBC data
+# last_updated = observation timestamp from NDBC data (YY, MM, DD, hh, mm) in UTC
 SENSOR_DEFINITIONS: dict[str, tuple[str, str | None, str | None, str | None]] = {
     "last_updated": ("Last Updated", None, SensorDeviceClass.TIMESTAMP, None),
     "wtmp": ("Water Temperature", UnitOfTemperature.CELSIUS, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT),
@@ -47,6 +49,25 @@ def _get_attr(obj: dict | None, key: str):
     if lookup == "mwdd":
         return obj.get("mwd")
     return obj.get(lookup)
+
+
+def _observation_timestamp(data: dict | None) -> datetime | None:
+    """Build UTC datetime from NDBC observation time (YY, MM, DD, hh, mm)."""
+    if data is None:
+        return None
+    yy = data.get("yy")
+    month = data.get("month")
+    dd = data.get("dd")
+    hh = data.get("hh")
+    minute = data.get("minute")
+    if yy is None or month is None or dd is None or hh is None or minute is None:
+        return None
+    # NDBC uses 2-digit year (e.g. 25 = 2025)
+    year = 2000 + int(yy) if int(yy) < 100 else int(yy)
+    try:
+        return datetime(year, int(month), int(dd), int(hh), int(minute), 0, 0, tzinfo=timezone.utc)
+    except (ValueError, TypeError):
+        return None
 
 
 async def async_setup_entry(
@@ -110,7 +131,7 @@ class NoaaBuoySensor(CoordinatorEntity[NoaaBuoyCoordinator], SensorEntity):
     def native_value(self):
         """Return the latest value from the coordinator."""
         if self._sensor_key == "last_updated":
-            return getattr(self.coordinator, "last_update_time", None)
+            return _observation_timestamp(self.coordinator.data)
         val = _get_attr(self.coordinator.data, self._sensor_key)
         if val is None:
             return None
