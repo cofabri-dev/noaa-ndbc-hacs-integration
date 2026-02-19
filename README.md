@@ -51,6 +51,7 @@ For each configured station you get:
 
 | Sensor               | Description              | Unit   |
 |----------------------|--------------------------|--------|
+| Last Updated         | When the data was last refreshed | (timestamp) |
 | Water Temperature    | Sea surface temperature  | °C     |
 | Air Temperature      | Air temperature          | °C     |
 | Dew Point            | Dew point temperature    | °C     |
@@ -64,6 +65,8 @@ For each configured station you get:
 | Mean Wave Direction  | Wave direction           | °      |
 
 Values show as “unavailable” when the station does not report that measurement or when data is missing (`MM` in NDBC files).
+
+See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example template sensor (air + water temp → swim comfort) and how to update the integration.
 
 ---
 

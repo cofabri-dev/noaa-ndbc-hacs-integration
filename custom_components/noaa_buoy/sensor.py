@@ -21,7 +21,9 @@ from .const import DOMAIN
 from .coordinator import NoaaBuoyCoordinator
 
 # Sensor key -> (name, unit, device_class, state_class)
+# last_updated is synthetic (from coordinator), not from NDBC data
 SENSOR_DEFINITIONS: dict[str, tuple[str, str | None, str | None, str | None]] = {
+    "last_updated": ("Last Updated", None, SensorDeviceClass.TIMESTAMP, None),
     "wtmp": ("Water Temperature", UnitOfTemperature.CELSIUS, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT),
     "atmp": ("Air Temperature", UnitOfTemperature.CELSIUS, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT),
     "dewp": ("Dew Point", UnitOfTemperature.CELSIUS, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT),
@@ -107,6 +109,8 @@ class NoaaBuoySensor(CoordinatorEntity[NoaaBuoyCoordinator], SensorEntity):
     @property
     def native_value(self):
         """Return the latest value from the coordinator."""
+        if self._sensor_key == "last_updated":
+            return getattr(self.coordinator, "last_update_time", None)
         val = _get_attr(self.coordinator.data, self._sensor_key)
         if val is None:
             return None

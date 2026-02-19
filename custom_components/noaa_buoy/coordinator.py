@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from homeassistant.core import HomeAssistant
@@ -71,6 +71,7 @@ class NoaaBuoyCoordinator(DataUpdateCoordinator[dict[str, Any] | None]):
             update_interval=timedelta(minutes=DEFAULT_UPDATE_INTERVAL),
         )
         self.station_id = station_id.strip()
+        self.last_update_time: datetime | None = None
 
     async def _async_update_data(self) -> dict[str, Any] | None:
         session = async_get_clientsession(self.hass)
@@ -78,6 +79,7 @@ class NoaaBuoyCoordinator(DataUpdateCoordinator[dict[str, Any] | None]):
             data = await fetch_station_data(session, self.station_id)
             if data is None:
                 raise UpdateFailed("No data in NDBC response")
+            self.last_update_time = datetime.now(timezone.utc)
             return data
         except Exception as e:
             raise UpdateFailed(f"Failed to fetch NDBC data: {e}") from e
