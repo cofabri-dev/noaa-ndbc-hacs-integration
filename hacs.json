@@ -1,0 +1,5 @@
+{
+  "name": "NOAA NDBC Ocean Weather",
+  "content_in_root": false,
+  "render_readme": true
+}
