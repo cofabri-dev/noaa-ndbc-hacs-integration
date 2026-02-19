@@ -82,3 +82,9 @@ See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example temp
 
 - Home Assistant 2023.x or newer (tested on recent versions).
 - Internet access to `ndbc.noaa.gov`.
+
+---
+
+## Brand assets
+
+Icon and logo files are in **`brands/noaa_buoy/`**. To show them in Home Assistant’s integration UI, submit them to the [home-assistant/brands](https://github.com/home-assistant/brands) repo; see **`brands/README.md`** for steps.
