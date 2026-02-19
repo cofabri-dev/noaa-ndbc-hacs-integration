@@ -81,9 +81,15 @@ class NoaaBuoyCoordinator(DataUpdateCoordinator[dict[str, Any] | None]):
     async def _async_update_data(self) -> dict[str, Any] | None:
         session = async_get_clientsession(self.hass)
         try:
-            data = await fetch_station_data(session, self.station_id)
-            if data is None:
+            new_data = await fetch_station_data(session, self.station_id)
+            if new_data is None:
                 raise UpdateFailed("No data in NDBC response")
-            return data
+            # Keep last reported value for any param not in this update (NDBC sometimes omits some params)
+            previous = self.data or {}
+            merged = dict(previous)
+            for key, value in new_data.items():
+                if value is not None:
+                    merged[key] = value
+            return merged
         except Exception as e:
             raise UpdateFailed(f"Failed to fetch NDBC data: {e}") from e

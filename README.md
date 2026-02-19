@@ -64,9 +64,9 @@ For each configured station you get:
 | Average Wave Period  | Average wave period      | s      |
 | Mean Wave Direction  | Wave direction           | °      |
 
-Values show as “unavailable” when the station does not report that measurement or when data is missing (`MM` in NDBC files).
+Values show as “unavailable” when the station does not report that measurement or when data is missing (`MM` in NDBC files). When an NDBC update omits some parameters (e.g. wind is updated but water temperature is missing), the integration keeps the last reported value for each parameter until a new value is received.
 
-See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example template sensor (air + water temp → swim comfort) and how to update the integration.
+See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example template sensor (air + water temp → swim comfort) and how to update the integration. See **[Ocean Notifications (multi-station) example](OCEAN_NOTIFICATIONS_MULTI_STATION_EXAMPLE.md)** for a full automation that combines NDBC data with weather and sends swim-condition alerts, including why to use more than one station (fallback when a buoy is offline or not reporting all parameters).
 
 ---
 
@@ -74,6 +74,7 @@ See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example temp
 
 - Data is fetched about **every 30 minutes**.
 - NDBC typically updates stations **hourly** (often by ~25 minutes after the hour).
+- When an update does not include every parameter (e.g. only wind in one report), the integration retains the last reported value for omitted parameters until NDBC sends a new value.
 - No API key or account is required; please keep the default update interval to avoid overloading NDBC.
 
 ---
@@ -85,6 +86,6 @@ See **[Ocean Swim Comfort template](OCEAN_SWIM_COMFORT.md)** for an example temp
 
 ---
 
-## Brand assets
+## Brand assets (icon in HA / HACS)
 
-Icon and logo files are in **`brands/noaa_buoy/`**. To show them in Home Assistant’s integration UI, submit them to the [home-assistant/brands](https://github.com/home-assistant/brands) repo; see **`brands/README.md`** for steps.
+If you see **"Icon Not Available"** in HACS or under Settings → Integrations, that’s because Home Assistant only loads icons from the [home-assistant/brands](https://github.com/home-assistant/brands) repo. Icon files are in **`brands/noaa_buoy/`** (e.g. `icon.png`). To get the icon to show, submit them to **home-assistant/brands**; see **`brands/README.md`** for step-by-step instructions.

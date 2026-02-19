@@ -78,3 +78,9 @@ You should see **Ocean Swim Comfort** under **Template** (or under your NOAA dev
 2. **Restart Home Assistant**: **Settings** → **System** → **Restart**.
 
 Your existing config (station IDs, entities, and the Ocean Swim Comfort template) will stay; only the integration code is updated.
+
+---
+
+## Automation example
+
+For a full automation that uses this comfort sensor plus NDBC wave data and your weather entity to send swim-condition notifications (e.g. comfort changes, daily summary, rip risk / glass calm flags), including a multi-station fallback pattern, see **[Ocean Notifications (multi-station) example](OCEAN_NOTIFICATIONS_MULTI_STATION_EXAMPLE.md)**.

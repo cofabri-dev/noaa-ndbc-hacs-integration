@@ -2,20 +2,22 @@
 
 This folder contains icon and logo assets for the **noaa_buoy** integration.
 
-- **icon.png** – Square icon for the integration (e.g. in Settings → Integrations).
-- **logo.png** – Logo for the integration.
+- **icon.png** – Square icon for the integration (e.g. in Settings → Integrations and in HACS).
+- **logo.png** – Optional logo for the integration.
 
-## Showing the logo in Home Assistant
+## Why it says "Icon Not Available" in HA / HACS
 
-Home Assistant loads integration icons from [brands.home-assistant.io](https://brands.home-assistant.io/), which is populated from the [home-assistant/brands](https://github.com/home-assistant/brands) repository.
+Home Assistant and HACS **only** load integration icons from [brands.home-assistant.io](https://brands.home-assistant.io/), which is populated from the [home-assistant/brands](https://github.com/home-assistant/brands) repository. Until **noaa_buoy** is added there, the integration will show "Icon Not Available" in Settings → Integrations and in HACS. Adding an icon to this repo alone is not enough—you must submit it to **home-assistant/brands**.
 
-To have this integration’s icon and logo appear in Home Assistant:
+## How to get the icon to show
 
-1. Open a pull request to [home-assistant/brands](https://github.com/home-assistant/brands).
-2. Add the contents of `brands/noaa_buoy/` into **`custom_integrations/noaa_buoy/`** in that repo (so `icon.png` and `logo.png` are in `custom_integrations/noaa_buoy/`).
-3. After the PR is merged, the integration will use `https://brands.home-assistant.io/noaa_buoy/icon.png` and `.../logo.png` in the UI.
+1. Fork the [home-assistant/brands](https://github.com/home-assistant/brands) repository.
+2. In your fork, create the folder **`custom_integrations/noaa_buoy/`**.
+3. Copy **`icon.png`** (and optionally **`logo.png`**) from this repo’s **`brands/noaa_buoy/`** into **`custom_integrations/noaa_buoy/`** in the brands repo.
+4. Open a pull request to [home-assistant/brands](https://github.com/home-assistant/brands) with the new folder and file(s).
+5. After the PR is merged, the integration will use `https://brands.home-assistant.io/noaa_buoy/icon.png` and the icon will appear in Home Assistant and HACS.
 
-The `noaa_buoy` folder name must match the integration **domain** in `manifest.json`.
+The folder name **noaa_buoy** must match the integration **domain** in `manifest.json`.
 
 ## Official NOAA emblem
 
