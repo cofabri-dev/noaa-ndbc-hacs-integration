@@ -100,7 +100,7 @@ class NoaaBuoySensor(CoordinatorEntity[NoaaBuoyCoordinator], SensorEntity):
         self._attr_unique_id = f"{config_entry.entry_id}_{sensor_key}"
         self._attr_device_info = {
             "identifiers": {(DOMAIN, config_entry.entry_id)},
-            "name": f"NOAA Buoy {station_id}",
+            "name": f"NOAA NDBC Ocean Weather {station_id}",
             "manufacturer": "NOAA NDBC",
         }
 

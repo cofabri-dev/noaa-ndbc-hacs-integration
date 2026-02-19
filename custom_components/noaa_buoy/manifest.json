@@ -1,6 +1,6 @@
 {
   "domain": "noaa_buoy",
-  "name": "NOAA Buoy",
+  "name": "NOAA NDBC Ocean Weather",
   "codeowners": [],
   "config_flow": true,
   "documentation": "https://www.ndbc.noaa.gov/",

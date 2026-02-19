@@ -1,6 +1,6 @@
-# NOAA Buoy – Home Assistant Integration
+# NOAA NDBC Ocean Weather – Home Assistant Integration
 
-Pull NOAA NDBC buoy data (water temperature, air temperature, wind, waves, pressure) into Home Assistant. Uses the [NDBC realtime2](https://www.ndbc.noaa.gov/data/realtime2/) text files—no API key required.
+Pull NOAA NDBC buoy and coastal station data (water temperature, air temperature, wind, waves, pressure) into Home Assistant. Uses the [NDBC realtime2](https://www.ndbc.noaa.gov/data/realtime2/) text files—no API key required.
 
 ---
 
@@ -14,7 +14,7 @@ Pull NOAA NDBC buoy data (water temperature, air temperature, wind, waves, press
    - **Repository:** `https://github.com/cofabri-dev/noaa-ndbc-hacs-integration` (use your actual repo URL).
    - **Category:** **Integration**.
 4. Click **ADD**, then **Close**.
-5. In HACS → **Integrations**, search for **NOAA Buoy** → **Download**.
+5. In HACS → **Integrations**, search for **NOAA NDBC Ocean Weather** → **Download**.
 6. **Restart Home Assistant:** **Settings** → **System** → **Restart**.
 
 ### Option B: Manual
@@ -30,7 +30,7 @@ Pull NOAA NDBC buoy data (water temperature, air temperature, wind, waves, press
 ## Configuration
 
 1. Go to **Settings** → **Devices & services** → **Add integration**.
-2. Search for **NOAA Buoy** and select it.
+2. Search for **NOAA NDBC Ocean Weather** and select it.
 3. Enter your **NDBC Station ID** (e.g. `41002` for buoys, `FPSN7` for C-MAN stations).
 4. Submit. The integration will validate the station and create the device and sensors.
 

@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "NOAA Buoy station",
+        "title": "NOAA NDBC Ocean Weather station",
         "description": "Enter the NDBC station ID (e.g. 41002 for buoys, FPSN7 for C-MAN). Find IDs at [Station List](https://ndbc.noaa.gov/to_station.shtml) or [Map](https://ndbc.noaa.gov/obs.shtml).",
         "data": {
           "station_id": "Station ID"
