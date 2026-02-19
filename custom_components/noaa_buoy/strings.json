@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NOAA Buoy station",
+        "description": "Enter the NDBC station ID (e.g. 41002 for buoys, FPSN7 for C-MAN). Find IDs at [Station List](https://ndbc.noaa.gov/to_station.shtml) or [Map](https://ndbc.noaa.gov/obs.shtml).",
+        "data": {
+          "station_id": "Station ID"
+        },
+        "data_description": {
+          "station_id": "5-digit buoy ID or C-MAN station ID (e.g. 41002, FPSN7)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach NDBC or fetch data for this station.",
+      "invalid_station": "Invalid or unknown station ID. Check the ID at ndbc.noaa.gov."
+    },
+    "abort": {
+      "already_configured": "This station is already configured."
+    }
+  }
+}

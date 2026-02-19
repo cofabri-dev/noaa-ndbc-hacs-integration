@@ -1,0 +1,11 @@
+{
+  "domain": "noaa_buoy",
+  "name": "NOAA Buoy",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://www.ndbc.noaa.gov/",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "1.0.0"
+}
