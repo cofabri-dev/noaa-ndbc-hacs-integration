@@ -11,7 +11,7 @@ Pull NOAA NDBC buoy data (water temperature, air temperature, wind, waves, press
 1. In Home Assistant, open **HACS** → **Integrations**.
 2. Click the **three dots (⋮)** (top right) → **Custom repositories**.
 3. Add:
-   - **Repository:** `https://github.com/YOUR_USERNAME/noaa-ndbc-hacs-integration` (use your actual repo URL).
+   - **Repository:** `https://github.com/cofabri-dev/noaa-ndbc-hacs-integration` (use your actual repo URL).
    - **Category:** **Integration**.
 4. Click **ADD**, then **Close**.
 5. In HACS → **Integrations**, search for **NOAA Buoy** → **Download**.
@@ -19,7 +19,7 @@ Pull NOAA NDBC buoy data (water temperature, air temperature, wind, waves, press
 
 ### Option B: Manual
 
-1. [Download](https://github.com/YOUR_USERNAME/noaa-ndbc-hacs-integration/archive/refs/heads/main.zip) or clone this repo.
+1. [Download](https://github.com/cofabri-dev/noaa-ndbc-hacs-integration/archive/refs/heads/main.zip) or clone this repo.
 2. Copy the **`custom_components/noaa_buoy`** folder into your Home Assistant **config** directory:
    - Target path: `config/custom_components/noaa_buoy/`
    - So you have: `config/custom_components/noaa_buoy/manifest.json`, `__init__.py`, etc.
